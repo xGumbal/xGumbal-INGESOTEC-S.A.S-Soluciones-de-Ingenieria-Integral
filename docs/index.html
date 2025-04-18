@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INGESOTEC S.A.S | Soluciones de Ingeniería Integral</title>
+    <!-- Favicon añadido -->
+    <link rel="icon" href="./logo-ingesotec.jpeg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2d3962;
+            --secondary: #f7b337;
+            --light: #e7e8e7;
+            --accent: #c2af88;
+            --dark: #080a1b;
+            --text: #61687b;
+            --gray-light: #6a7494;
+            --gray-medium: #6c7c8c;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+            color: var(--text);
+            background-color: var(--light);
+            font-size: 1.05rem;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-weight: 700;
+            margin-top: 0;
+        }
+        
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.2rem; border-bottom: 3px solid var(--secondary); display: inline-block; padding-bottom: 8px; }
+        h3 { font-size: 1.8rem; color: var(--gray-medium); }
+        
+        section {
+            padding: 60px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            background-color: var(--dark);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .nav-logo {
+            height: 50px;
+            transition: transform 0.3s;
+        }
+        
+        .nav-logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        #hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: var(--light);
+            padding: 80px 20px;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            margin-bottom: 40px;
+        }
+        
+        #hero .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-align: left;
+        }
+        
+        #hero .hero-content {
+            flex: 1;
+            max-width: 60%;
+        }
+        
+        #hero h1 {
+            color: var(--light);
+            margin-bottom: 20px;
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        #hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 40px 0;
+            color: var(--gray-light);
+        }
+        
+        .hero-logo {
+            height: 220px;
+            margin-bottom: 0;
+            margin-left: 40px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+        
+        #servicios {
+            padding: 80px 0;
+            position: relative;
+            background-color: var(--light);
+        }
+        
+        #servicios::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('./images/Fondo.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .servicios-container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .servicio-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.4s, box-shadow 0.4s;
+            border-top: 5px solid var(--secondary);
+        }
+        
+        .servicio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .servicio-content {
+            padding: 30px;
+        }
+        
+        .servicio-content ul {
+            padding-left: 0;
+            margin-top: 20px;
+        }
+        
+        .servicio-content li {
+            margin-bottom: 12px;
+            list-style-type: none;
+            position: relative;
+            padding-left: 30px;
+            line-height: 1.6;
+        }
+        
+        .servicio-content li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        #pre-contacto {
+            background-color: var(--accent);
+            padding: 80px 0;
+            clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 95%);
+        }
+        
+        .pre-contacto-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .pre-contacto-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .pre-contacto-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .pre-contacto-form input {
+            padding: 15px;
+            border: 2px solid var(--gray-light);
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .pre-contacto-form input:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        .pre-contacto-form button {
+            padding: 15px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            margin-top: 10px;
+        }
+        
+        .pre-contacto-form button:hover {
+            background: var(--dark);
+            transform: translateY(-2px);
+        }
+        
+        /* Galería de Proyectos - Carrusel modificado */
+        #proyectos {
+            background-color: white;
+            padding: 80px 0;
+        }
+        
+        .carousel-container {
+            position: relative;
+            max-width: 1400px;
+            margin: 40px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            height: 400px;
+        }
+        
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+        
+        .carousel img {
+            width: 20%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+            padding: 0 10px;
+            box-sizing: border-box;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .carousel img:hover {
+            transform: scale(1.02);
+        }
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(45, 57, 98, 0.7);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            border-radius: 50%;
+        }
+        
+        .carousel-btn:hover {
+            background-color: var(--primary);
+        }
+        
+        #prevBtn {
+            left: 20px;
+        }
+        
+        #nextBtn {
+            right: 20px;
+        }
+        
+        /* Modal para imágenes ampliadas - Modificado para evitar deformación */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.show {
+            opacity: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            animation: zoomIn 0.3s forwards;
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 2001;
+        }
+        
+        .close:hover {
+            color: var(--secondary);
+        }
+        
+        #contacto {
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 80px 0;
+            clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 95%);
+            margin-top: -40px;
+        }
+        
+        .contacto-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .contacto-logo-container {
+            background-color: var(--primary);
+            padding: 40px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .contacto-logo {
+            max-height: 250px;
+            width: auto;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+        
+        .contacto-info {
+            padding: 20px 0;
+        }
+        
+        .contacto-info h2 {
+            color: var(--light);
+            border-bottom-color: var(--secondary);
+            margin-bottom: 30px;
+        }
+        
+        .contacto-details {
+            margin-top: 20px;
+        }
+        
+        .contacto-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .contacto-icon {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-right: 15px;
+            min-width: 30px;
+        }
+        
+        .contacto-text h3 {
+            color: var(--secondary);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+        
+        .contacto-text p, .contacto-text a {
+            color: var(--light);
+            margin: 0;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        .contacto-text a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 1rem;
+        }
+        
+        footer p {
+            margin: 10px 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        [data-aos] {
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+        
+        [data-aos="fade-up"] {
+            transform: translateY(30px);
+        }
+        
+        [data-aos="fade-down"] {
+            transform: translateY(-30px);
+        }
+        
+        [data-aos="fade-right"] {
+            transform: translateX(-30px);
+        }
+        
+        [data-aos="fade-left"] {
+            transform: translateX(30px);
+        }
+        
+        [data-aos].aos-animate {
+            opacity: 1;
+            transform: translate(0);
+        }
+        
+        @media (max-width: 992px) {
+            h1 { font-size: 2.4rem; }
+            h2 { font-size: 2rem; }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            #hero {
+                padding: 60px 20px;
+            }
+            
+            #hero .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            #hero .hero-content {
+                max-width: 100%;
+                margin-bottom: 30px;
+            }
+            
+            .hero-logo {
+                height: 180px;
+                margin-left: 0;
+            }
+            
+            .contacto-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .contacto-logo-container {
+                padding: 20px;
+            }
+            
+            .contacto-logo {
+                max-height: 180px;
+            }
+            
+            .carousel-container {
+                height: 350px;
+                max-width: 1000px;
+            }
+            
+            .carousel img {
+                width: 25%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                padding: 50px 20px;
+            }
+            
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.8rem; }
+            
+            #hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            #hero p {
+                font-size: 1.2rem;
+            }
+            
+            .servicios-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            #contacto {
+                clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 100%);
+                margin-top: -20px;
+            }
+            
+            .carousel-container {
+                height: 300px;
+                max-width: 800px;
+            }
+            
+            .carousel img {
+                width: 33.33%;
+            }
+            
+            .modal-content {
+                max-width: 95%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .nav-links {
+                gap: 10px;
+            }
+            
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+            
+            #hero {
+                padding: 50px 20px;
+            }
+            
+            .hero-logo {
+                height: 150px;
+            }
+            
+            #hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            #hero p {
+                font-size: 1.1rem;
+            }
+            
+            .pre-contacto-container {
+                padding: 30px 20px;
+            }
+            
+            .carousel-container {
+                height: 250px;
+                max-width: 100%;
+            }
+            
+            .carousel img {
+                width: 50%;
+            }
+            
+            .carousel-btn {
+                padding: 10px 15px;
+                font-size: 1.2rem;
+            }
+            
+            .contacto-logo {
+                max-height: 150px;
+            }
+            
+            .close {
+                font-size: 30px;
+                top: 15px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de Navegación -->
+    <nav>
+        <div class="nav-container">
+            <img src="./logo-ingesotec.jpeg" alt="INGESOTEC Logo" class="nav-logo">
+            <div class="nav-links">
+                <a href="#hero">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content" data-aos="fade-right">
+                <h1 data-aos="fade-up" data-aos-delay="100">Soluciones Integrales de Ingeniería</h1>
+                <p data-aos="fade-up" data-aos-delay="200">Expertos en sistemas eléctricos, obras civiles y mantenimiento industrial con los más altos estándares de calidad</p>
+            </div>
+            <img src="./logo-ingesotec.jpeg" alt="INGESOTEC Logo" class="hero-logo" data-aos="fade-left">
+        </div>
+    </section>
+    
+    <!-- Servicios Section -->
+    <section id="servicios">
+        <div class="container servicios-container">
+            <h2 data-aos="fade-right">Nuestros Servicios</h2>
+            <div class="servicios-grid">
+                <div class="servicio-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="servicio-content">
+                        <h3>Especialidades Técnicas</h3>
+                        <ul>
+                            <li>Sistemas eléctricos (baja, media y alta tensión)</li>
+                            <li>Obras civiles y arquitectura</li>
+                            <li>Lavado y pintura de fachadas</li>
+                            <li>Mampostería y acabados</li>
+                            <li>Mantenimiento de aire acondicionado</li>
+                            <li>Ventilación mecánica</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="servicio-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="servicio-content">
+                        <h3>Ingeniería Especializada</h3>
+                        <ul>
+                            <li>Metalmecánica industrial</li>
+                            <li>Carpintería metálica</li>
+                            <li>Ebanistería profesional</li>
+                            <li>Cableado estructurado</li>
+                            <li>Sistemas de videovigilancia</li>
+                            <li>Redes contra incendios</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Proyectos Section -->
+    <section id="proyectos">
+        <div class="container">
+            <h2 data-aos="fade-right">Nuestros Proyectos</h2>
+            <div class="carousel-container" data-aos="fade-up">
+                <div class="carousel">
+                    <img src="./images/imagen1.jpg" alt="Proyecto 1">
+                    <img src="./images/imagen2.jpg" alt="Proyecto 2">
+                    <img src="./images/imagen3.jpg" alt="Proyecto 3">
+                    <img src="./images/imagen4.jpg" alt="Proyecto 4">
+                    <img src="./images/imagen5.jpg" alt="Proyecto 5">
+                    <img src="./images/imagen6.jpg" alt="Proyecto 6">
+                    <img src="./images/imagen7.jpg" alt="Proyecto 7">
+                    <img src="./images/imagen8.jpg" alt="Proyecto 8">
+                    <img src="./images/imagen9.jpg" alt="Proyecto 9">
+                    <img src="./images/imagen10.jpg" alt="Proyecto 10">
+                </div>
+                <button class="carousel-btn" id="prevBtn">&#10094;</button>
+                <button class="carousel-btn" id="nextBtn">&#10095;</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pre-Contacto Section -->
+    <section id="pre-contacto">
+        <div class="container">
+            <div class="pre-contacto-container" data-aos="fade-up">
+                <h2>¿Interesado en nuestros servicios?</h2>
+                <form class="pre-contacto-form" id="contactForm">
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required>
+                    <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
+                    <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+                    <button type="submit">Enviar información</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contacto Section -->
+    <section id="contacto">
+        <div class="container">
+            <div class="contacto-container">
+                <div class="contacto-logo-container" data-aos="fade-right">
+                    <img src="./logo-ingesotec.jpeg" alt="INGESOTEC Logo" class="contacto-logo">
+                </div>
+                <div class="contacto-info" data-aos="fade-left">
+                    <h2>Contáctenos</h2>
+                    <div class="contacto-details">
+                        <div class="contacto-item">
+                            <div class="contacto-icon">📍</div>
+                            <div class="contacto-text">
+                                <h3>Ubicación</h3>
+                                <p>Barranquilla, Colombia</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contacto-item">
+                            <div class="contacto-icon">📞</div>
+                            <div class="contacto-text">
+                                <h3>Teléfono</h3>
+                                <p><a href="tel:+573176210965">+57 317 6210965</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="contacto-item">
+                            <div class="contacto-icon">✉️</div>
+                            <div class="contacto-text">
+                                <h3>Correo Electrónico</h3>
+                                <p><a href="mailto:gerencia.ingesotec@gmail.com">gerencia.ingesotec@gmail.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer data-aos="fade-up">
+        <div class="container">
+            <p>© 2020 INGESOTEC S.A.S. Todos los derechos reservados.</p>
+            <p>Soluciones integrales de ingeniería con excelencia y profesionalismo</p>
+        </div>
+    </footer>
+
+    <!-- Modal para imágenes ampliadas -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="expandedImage">
+    </div>
+
+    <!-- EmailJS SDK v4 con inicialización correcta -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init({
+                publicKey: "iSeVT-b-3pdVQbP0n",
+            });
+        })();
+    </script>
+
+    <!-- Scripts principales -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animaciones al hacer scroll
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('[data-aos]');
+                const windowHeight = window.innerHeight;
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementPosition < windowHeight - elementVisible) {
+                        element.classList.add('aos-animate');
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll();
+            
+            // Carrusel automático - Modificado para mostrar 5 imágenes
+            const carousel = document.querySelector('.carousel');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const images = document.querySelectorAll('.carousel img');
+            let currentIndex = 0;
+            const totalImages = images.length;
+            const imagesToShow = 5;
+            let intervalId;
+            
+            function updateCarousel() {
+                const imageWidth = 100 / imagesToShow;
+                carousel.style.transform = `translateX(-${currentIndex * imageWidth}%)`;
+            }
+            
+            function nextImage() {
+                if (currentIndex < totalImages - imagesToShow) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0;
+                }
+                updateCarousel();
+            }
+            
+            function prevImage() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                } else {
+                    currentIndex = totalImages - imagesToShow;
+                }
+                updateCarousel();
+            }
+            
+            function startAutoRotation() {
+                intervalId = setInterval(nextImage, 3250);
+            }
+            
+            function stopAutoRotation() {
+                clearInterval(intervalId);
+            }
+            
+            nextBtn.addEventListener('click', function() {
+                stopAutoRotation();
+                nextImage();
+                startAutoRotation();
+            });
+            
+            prevBtn.addEventListener('click', function() {
+                stopAutoRotation();
+                prevImage();
+                startAutoRotation();
+            });
+            
+            startAutoRotation();
+            
+            // Modal para imágenes ampliadas - Corregido para evitar deformación
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("expandedImage");
+            const closeBtn = document.getElementsByClassName("close")[0];
+            
+            // Hacer que las imágenes del carrusel sean clickeables
+            const carouselImages = document.querySelectorAll('.carousel img');
+            carouselImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    modal.style.display = "flex";
+                    modalImg.src = this.src;
+                    modalImg.alt = this.alt;
+                    setTimeout(() => {
+                        modal.classList.add('show');
+                    }, 10);
+                    document.body.style.overflow = 'hidden'; // Evitar scroll del fondo
+                });
+            });
+            
+            // Cerrar el modal
+            closeBtn.addEventListener('click', function() {
+                modal.classList.remove('show');
+                setTimeout(() => {
+                    modal.style.display = "none";
+                    document.body.style.overflow = 'auto'; // Restaurar scroll
+                }, 300);
+            });
+            
+            // Cerrar al hacer clic fuera de la imagen
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('show');
+                    setTimeout(() => {
+                        modal.style.display = "none";
+                        document.body.style.overflow = 'auto'; // Restaurar scroll
+                    }, 300);
+                }
+            });
+
+            // Formulario con EmailJS
+            const contactForm = document.getElementById('contactForm');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const submitBtn = contactForm.querySelector('button[type="submit"]');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Enviando...';
+                
+                const formData = {
+                    from_name: document.getElementById('nombre').value,
+                    from_phone: document.getElementById('telefono').value,
+                    from_email: document.getElementById('email').value,
+                    message: 'Nuevo contacto desde el sitio web de INGESOTEC'
+                };
+                
+                emailjs.send('service_hl9651b', 'template_r47in4o', formData)
+                    .then(function(response) {
+                        alert('✅ Gracias por su interés. Hemos recibido su información y nos pondremos en contacto pronto.');
+                        contactForm.reset();
+                    }, function(error) {
+                        alert('❌ Hubo un error al enviar. Por favor contáctenos directamente al +57 317 6210965 o a gerencia.ingesotec@gmail.com');
+                        console.error('EmailJS error:', error);
+                    })
+                    .finally(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Enviar información';
+                    });
+            });
+        });
+    </script>
+</body>
+</html>
